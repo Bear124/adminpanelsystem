@@ -18,7 +18,7 @@ from util.plugins.common import *
 def search_for_updates():
     clear()
     setTitle("Hazard Nuker Checking For Updates. . .")
-    r = requests.get("https://github.com/Bear124/Bearnukerupdatesystem/releases/latest")
+    r = requests.get("https://github.com/Bear124/adminpanelsystem/releases/latest")
 
     soup = str(BeautifulSoup(r.text, 'html.parser'))
     s1 = re.search('<title>', soup)
@@ -35,7 +35,7 @@ def search_for_updates():
                 ██║ ╚████║███████╗╚███╔███╔╝    ╚██████╔╝██║     ██████╔╝██║  ██║   ██║   ███████╗██╗
                 ╚═╝  ╚═══╝╚══════╝ ╚══╝╚══╝      ╚═════╝ ╚═╝     ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚══════╝╚═╝
                               {Fore.RED}Looks like this Bear Nuker {THIS_VERSION} is outdated '''.replace('█', f'{Fore.WHITE}█{Fore.RED}'), end="\n\n")
-        soup = BeautifulSoup(requests.get("https://github.com/Bear124/Bearnukerupdatesystem/releases").text, 'html.parser')
+        soup = BeautifulSoup(requests.get("https://github.com/Bear124/adminpanelsystem/releases").text, 'html.parser')
         for link in soup.find_all('a'):
             if "releases/download" in str(link):
                 update_url = f"https://github.com/{link.get('href')}"
@@ -67,7 +67,7 @@ def search_for_updates():
                 os._exit(0)
             #if they are running hazard source code
             else:
-                new_version_source = requests.get("https://github.com/Bear124/Bearnukerupdatesystem/archive/refs/heads/main.zip")
+                new_version_source = requests.get("https://github.com/Bear124/adminpanelsystem/archive/refs/heads/main.zip")
                 with open("Hazard-Nuker-master.zip", 'wb')as zipfile:
                     zipfile.write(new_version_source.content)
                 with ZipFile("Hazard-Nuker-master.zip", 'r') as filezip:
